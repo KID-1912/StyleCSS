@@ -1,0 +1,282 @@
+@import './variables.scss';
+
+// 原子类与辅助类
+
+// 文字相关
+//文字颜色类
+@each $colorKey, $colorVal in $colors {
+  .t-#{$colorKey} {
+    color: #{$colorVal} !important;
+  }
+}
+
+//文字字号类
+@each $sizeKey, $size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: #{$size}rem;
+  }
+}
+
+// 行高为1
+.lh-1 {
+  line-height: 1;
+}
+
+// 加粗字体
+.fw-bold {
+  font-weight: bolder;
+}
+
+//文本对齐类
+@each $var in ('center', 'left', 'right', 'justify') {
+  .t-#{$var} {
+    text-align: #{$var} !important;
+  }
+}
+
+// 文本溢出
+.t-ellipsis {
+  //1行
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 盒子相关
+.full {
+  width: 100%;
+  height: 100%;
+
+}
+
+.full-w {
+  width: 100%;
+}
+
+.full-h {
+  height: 100%;
+}
+
+// 布局相关
+.hide {
+  display: none !important;
+}
+
+// margin居中
+.m-center {
+  margin: 0 auto;
+}
+
+// 浮动
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+  content: '.';
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+// flex布局
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+@each $flexKey, $flexVal in $flex-jc {
+  .jc-#{$flexKey} {
+    justify-content: $flexVal;
+  }
+}
+
+@each $flexKey, $flexVal in $flex-jc {
+  .ac-#{$flexKey} {
+    align-content: $flexVal;
+  }
+}
+
+@each $flexKey, $flexVal in $flex-al {
+  .al-#{$flexKey} {
+    align-items: $flexVal;
+  }
+}
+
+@each $flexKey, $flexVal in $flex-al {
+  .as-#{$flexKey} {
+    align-self: $flexVal;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+// 内外边距
+@each $typeKey, $typeVal in $space-types {
+  // .m-12, p-12...
+  @each $sizeKey, $sizeVal in $space-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$typeVal}: #{$sizeVal}rem !important;
+    }
+  }
+
+  // .mx-12 px-12...
+  @each $sizeKey, $sizeVal in $space-sizes {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$typeVal}-left: #{$sizeVal}rem !important;
+      #{$typeVal}-right: #{$sizeVal}rem !important;
+    }
+  }
+
+  // .my-12，py-12...
+  @each $sizeKey, $sizeVal in $space-sizes {
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$typeVal}-top: #{$sizeVal}rem !important;
+      #{$typeVal}-bottom: #{$sizeVal}rem !important;
+    }
+  }
+
+  // .mt-12, .mr-12...
+  @each $directKey, $directVal in $space-directions {
+    @each $sizeKey, $sizeVal in $space-sizes {
+      .#{$typeKey}#{$directKey}-#{$sizeKey} {
+        #{$typeVal}-#{$directVal}: #{$sizeVal}rem !important;
+      }
+    }
+  }
+}
+
+// 定位类
+@each $positionKey, $positionVal in $space-position {
+  .pos-#{$positionKey} {
+    position: #{$positionVal} !important;
+  }
+}
+
+// 绝对居中
+.absCenter {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.absCenterX {
+  position: absolute !important;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.absCenterY {
+  position: absolute !important;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//背景颜色类
+@each $colorKey, $colorVal in $bgColors {
+  .bgc-#{$colorKey} {
+    background-color: #{$colorVal} !important;
+  }
+}
+
+.bg-linear {
+  background-image: $linearColor;
+}
+
+// border-radius
+.bd-filt {
+  border-radius: 4px;
+}
+
+// a链接块标签
+.a-block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+// sprite图标类
+.sprite {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 23px 28px;
+  // background-image: url('~@/assets/img/sprite.png');
+
+  // navbar的icon类
+  // &.sprite-topbar {
+  //   display: flex;
+  //   background-position: 0 87.195%;
+  //   background-repeat: repeat;
+  // }
+}
+
+// icon图标类
+.icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  // &.icon-left {
+  //   width: 0.5556rem;
+  //   background-image: url('~@/assets/img/backBg.png');
+  // }
+}
+
+// btn类
+.btn {
+  // &.btn-lock {
+  //   @include bg('icons/icon-unlock.png');
+  //   width: 32px;
+  //   height: 32px;
+  // }
+}
+
+// 动画类
+// ...
+
+html {
+  overflow-y: hidden;
+  height: 100%;
+  font-size: math.div(100vw, 1920) * 100;
+}
+
+body {
+  height: 100%;
+  font: 14px / 1 Source Han Sans CN, Source Han Sans CNArial, 'Microsoft YaHei', '\5b8b\4f53', sans-serif;
+
+  /* 宋体 unicode */
+  color: map-get($colors, dark);
+  // user-select: none; 图片文字不允许用户选中
+  -webkit-font-smoothing: antialiased; //平滑字体
+}

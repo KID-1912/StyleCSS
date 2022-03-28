@@ -1,0 +1,101 @@
+//全局变量与混合
+// 变量
+@colors: {
+  white: #fff;
+  black: #32373F;
+}
+
+@bgColors: {
+  white: #fff;
+  black: #000;
+}
+
+@linearColor: linear-gradient(0deg, #fff, #000);
+
+@font-sizes: {
+  0: 0;
+  12: 24px; // 12px
+  14: 28px; // 14px
+  16: 32px; // 16px
+  18: 36px; // 18px
+  24: 48px; // 24px
+}
+
+// 边框色
+@bdColors: {
+  theme: #0d79f4;
+  lightblue: #e5efff;
+  light: #edeef2;
+  grey: #eee;
+  shadow: rgba(0, 5, 97, 0.04);
+}
+
+@flex-jc: {
+  start: flex-start;
+  center: center;
+  end: flex-end;
+  between: space-between;
+  around: space-around;
+}
+
+@flex-al: {
+  start: flex-start;
+  center: center;
+  end: flex-end;
+}
+
+@space-types: {
+  m: margin;
+  p: padding;
+}
+
+@space-directions: {
+  t: top;
+  b: bottom;
+  l: left;
+  r: right;
+}
+
+@space-position: {
+  r: relative;
+  a: absolute;
+  f: fixed;
+  i: inherit
+};
+
+// 10px以下文字
+.fs-mini(@miniSize) {
+  font-size: @miniSize;
+  transform: scale(0.5);
+}
+
+@space-sizes: {
+  5: 10px; // 5px
+  10: 20px; // 10px
+  15: 30px; // 15px
+  20: 40px; // 20px
+  40: 80px; // 40px
+}
+
+//混合
+// 多行溢出
+.t-ellipsis(@line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+// 背景
+.bg(@path) {
+  background-image: url("~@assets/img/@{path}");
+  background-position: center;
+  background-size: cover;
+}
+
+.staticBg(@path) {
+  background-image: url("@{staticUrl}@{path}");
+  background-position: center;
+  background-size: cover;
+}

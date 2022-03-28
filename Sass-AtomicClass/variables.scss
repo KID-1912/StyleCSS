@@ -1,0 +1,124 @@
+//全局变量与混合
+// 变量
+$colors: (
+  'white': #fff,
+  'black': #000
+);
+
+$bgColors: (
+  'white': #fff,
+  'black': #000
+);
+
+$linearColor: linear-gradient(0deg, #fff, #000);
+
+$font-sizes: (
+  // 12px
+  'xs': 0.12,
+  // 14px
+  'sm': 0.14,
+  // 16px
+  'md': 0.16,
+  // 18px
+  'lg': 0.18,
+  // 20px
+  '20': 0.2,
+  // 24px
+  'xl': 0.24
+);
+
+// 边框/阴影色
+$bdColors: (
+  'theme': #0d79f4,
+  'lightblue': #e5efff,
+  'light': #edeef2,
+  'grey': #eee,
+  'shadow': rgba(0, 5, 97, 0.04)
+);
+
+$flex-jc: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around
+);
+
+$flex-al: (
+  'start': start,
+  'center': center,
+  'end': end
+);
+
+$space-types: (
+  m: margin,
+  p: padding
+);
+
+$space-directions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+);
+
+$space-position: (
+  r: relative,
+  a: absolute,
+  f: fixed,
+  i: inherit
+);
+
+// 间距尺寸
+$space-sizes: (
+  // 0px
+  0: 0,
+  // 4px
+  4: 0.04,
+  // 5px
+  5: 0.05,
+  // 6px
+  6: 0.06,
+  // 8px
+  8: 0.08,
+  // 10px
+  10: 0.1,
+  // 12px
+  12: 0.12,
+  // 16px
+  16: 0.16,
+  // 20px
+  20: 0.2,
+  // 24px
+  24: 0.24,
+  // 32px
+  32: 0.32,
+  // 40px
+  40: 0.4,
+  // 48px
+  48: 0.48,
+  // 64px
+  64: 0.64
+);
+
+// 多行溢出
+@mixin t-ellipsis($line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+// 背景图
+@mixin bg($path) {
+  background-image: url('~@/assets/images/#{$path}');
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin staticBg($path) {
+  background-image: url('#{$staticUrl}#{$path}');
+  background-position: center;
+  background-size: cover;
+}

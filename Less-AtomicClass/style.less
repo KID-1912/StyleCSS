@@ -1,0 +1,470 @@
+@import './variables.less';
+
+// 原子类与辅助类
+
+//文本相关
+// 文字颜色类
+each(@colors, {
+    .t-@{key} {
+      color: @value;
+    }
+  }
+
+);
+
+// 文字字号类
+each(@font-sizes, {
+
+    .fs-@{key} {
+      font-size: @value;
+    }
+  }
+
+);
+
+// 无行高
+.lh-1 {
+  line-height: 1;
+}
+
+// 加粗字体
+.fw-bold {
+  font-weight: bolder;
+}
+
+// 文本对齐类
+@directs: center, left, right;
+
+each(@directs, {
+
+    .t-@{value} {
+      text-align: @value;
+    }
+  }
+
+);
+
+// 文本溢出  1行
+.t-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+//盒子相关
+.full {
+  width: 100%;
+  height: 100%;
+
+}
+
+.full-w {
+  width: 100%;
+}
+
+.full-h {
+  height: 100%;
+}
+
+//布局相关
+.hide {
+  display: none !important;
+}
+
+// margin居中
+.m-center {
+  margin: 0 auto;
+}
+
+// 浮动
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+// 清除浮动
+.clearfix {
+  _zoom: 1;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+// flex布局
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+each(@flex-jc, {
+
+    .jc-@{key} {
+      justify-content: @value;
+    }
+    .ac-@{key} {
+      align-content: @value;
+    }
+  }
+
+);
+
+each(@flex-al, {
+    .al-@{key} {
+      align-items: @value;
+    }
+
+    .as-@{key} {
+      align-self: @value;
+    }
+  }
+
+);
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+//内外边距
+each(@space-types, .(@typeVal, @typeK) {
+    // .m-1, p-1...
+    each(@space-sizes, .(@sizeVal, @sizeK) {
+
+        // 边距大小
+        .@{typeK}-@{sizeK} {
+          @{typeVal}: @sizeVal;
+        }
+      }
+
+    );
+
+    // .mx-1, px-1...
+    each(@space-sizes, .(@sizeVal, @sizeK) {
+        .@{typeK}x-@{sizeK} {
+          @{typeVal}-left: @sizeVal;
+          @{typeVal}-right: @sizeVal;
+        }
+      }
+
+    );
+
+    // .my-1, py-1...
+    each(@space-sizes, .(@sizeVal, @sizeK) {
+        .@{typeK}y-@{sizeK} {
+          @{typeVal}-top: @sizeVal;
+          @{typeVal}-bottom: @sizeVal;
+        }
+      }
+
+    );
+
+    // .mt-1, mr-2, pt-3, pb-4...
+    each(@space-directions, .(@direVal, @direKey) {
+        // 边距方向
+
+        each(@space-sizes, .(@sizeVal, @sizeK) {
+
+            .@{typeK}@{direKey}-@{sizeK} {
+              @{typeVal}-@{direVal}: @sizeVal;
+            }
+          }
+
+        )
+      }
+
+    )
+  }
+
+);
+
+// 定位类
+each(@space-position, {
+    .pos-@{key} {
+      position: @value;
+    }
+  }
+)
+
+// 绝对居中
+.absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.absCenterX {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.absCenterY {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+// 背景类
+each(@bgColors, {
+
+    .bgc-@{key} {
+      background-color: @value;
+    }
+  }
+
+);
+
+// border-radius
+.bd-filt {
+  border-radius: 10px;
+}
+
+// a链接块标签
+.a-block {
+  display: block;
+}
+
+// sprite图标类
+.sprite {
+  display: inline-block;
+  background-size: 23.0rem 27.9067rem;
+  background-repeat: no-repeat;
+}
+
+// icon图标类
+.icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &.icon-loading{
+    width: 263px;
+    height: 379px;
+    background-image: url("~@img/icon-loading.png");
+  }
+
+  &.icon-error{
+    width: 256px;
+    height: 322px;
+    background-image: url("~@img/icon-error.png");
+  }
+
+  &.icon-paused{
+    width: 40px;
+    height: 40px;
+    background-image: url('~@img/icon-paused.png');
+    animation-play-state: paused;
+  }
+  &.icon-played{
+    width: 40px;
+    height: 40px;
+    background-image: url('~@img/icon-play.png');
+    animation-play-state: running;
+  }
+
+  &.icon-nails{
+    width: 58px;
+    height: 62px;
+    background-image: url('~@img/clues/icon-nails.png');
+  }
+
+  &.icon-close {
+    // width: 70px;
+    // height: 70px;
+    width: 74px;
+    height: 74px;
+    background-size: 70px 70px;
+    background-image: url('~@img/popup/icon-close.png');
+  }
+
+  &.icon-task{
+    width: 30px;
+    height: 30px;
+    background-image: url('~@img/popup/icon-task.png');
+  }
+}
+
+// 按钮类
+.btn {
+  background-size: 100% 100%;
+  background-position: center;
+  vertical-align: middle;
+
+  &.btn-look {
+    background-image: url("~@img/button/btn-look.png");
+  }
+
+  &.btn-guide {
+    width: 329px;
+    height: 87px;
+    background-image: url("~@img/button/btn-guide.png");
+  }
+
+  &.btn-rule {
+    background-image: url("~@img/button/btn-rule.png");
+  }
+
+  &.btn-award {
+    background-image: url("~@img/button/btn-award.png");
+  }
+  &.btn-noprize{
+    background-image: url("~@img/button/btn-noprize.png");
+  }
+  &.btn-moreAct{
+    background-image: url("~@img/button/btn-moreAct.png");
+  }
+  &.btn-editInfo{
+    background-image: url("~@img/button/btn-editInfo.png");
+  }
+  &.btn-lookInfo{
+    background-image: url("~@img/button/btn-lookInfo.png");
+  }
+  &.btn-submit{
+    background-image: url("~@img/button/btn-submit.png");
+  }
+  &.btn-submitted{
+    background-image: url("~@img/button/btn-submitted.png");
+  }
+
+  &.btn-poster {
+    background-image: url("~@img/button/btn-poster.png");
+  }
+
+  &.btn-nostart {
+    background-image: url("~@img/button/btn-nostart.png");
+  }
+  &.btn-home {
+    background-image: url("~@img/button/btn-home.png");
+  }
+  &.btn-waiting {
+    background-image: url("~@img/button/btn-waiting.png");
+  }
+  &.btn-lottery {
+    background-image: url("~@img/button/btn-lottery.png");
+  }
+  &.btn-actend {
+    background-image: url("~@img/button/btn-actend.png");
+  }
+
+  &.btn-takeit{
+    background-image: url("~@img/button/btn-takeit.png");
+  }
+
+  &.btn-willstart{
+    background-image: url("~@img/button/btn-willstart.png");
+  }
+  &.btn-end{
+    background-image: url("~@img/button/btn-end.png");
+  }
+  &.btn-ongoing{
+    background-image: url("~@img/button/btn-ongoing.png");
+  }
+}
+
+
+// 动画相关// transition相关动画
+
+// animation动画
+// 渐进
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// 闪动
+@keyframes shrink {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// 浮动
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15.6%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// 旋转
+.rotate {
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+// 文档全局html/body样式
+html {
+  font-size: 100vw / 750 * 100;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  // overflow: hidden;
+  // -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+  color: #fff;
+  background: transparent;scroll-behavior: smooth; 
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  font-family: "Source Han Sans SC", "微软雅黑", "Microsoft YaHei", Tahoma, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
